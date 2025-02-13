@@ -1,13 +1,13 @@
 import 'modern-normalize';
-import SearchBar from './SearchBar/SearchBar.jsx';
-import ImageGallery from './ImageGallery/ImageGallery.jsx';
-import ErrorMessage from './ErrorMessage/ErrorMessage.jsx';
-import LoadMoreBtn from './LoadMoreBtn/LoadMoreBtn.jsx';
-import Loader from './Loader/Loader.jsx';
+import SearchBar from './SearchBar/SearchBar.js';
+import ImageGallery from './ImageGallery/ImageGallery.js';
+import ErrorMessage from './ErrorMessage/ErrorMessage.js';
+import LoadMoreBtn from './LoadMoreBtn/LoadMoreBtn.js';
+import Loader from './Loader/Loader.js';
 import { useEffect, useState } from 'react';
 import { fetchImagesByQuery } from '../services/api.js';
 import toast from 'react-hot-toast';
-import ImageModal from './ImageModal/ImageModal.jsx';
+import ImageModal from './ImageModal/ImageModal.js';
 
 function App() {
   const [imageList, setImageList] = useState([]);
