@@ -11,13 +11,13 @@ const SearchBar: FC<SearchBarProps> = ({ handleChangeQuery }) => {
   const handleSubmit = (evt: FormEvent<HTMLFormElement>) => {
     evt.preventDefault();
 
-    if (evt.target.search.value === '') {
-      toast.error('Please enter query!');
-      return;
-    }
+    // if (evt.target.search.value === '') {
+    //   toast.error('Please enter query!');
+    //   return;
+    // }
 
     handleChangeQuery(value);
-    evt.target.reset();
+    // evt.target.reset();
   };
 
   return (
