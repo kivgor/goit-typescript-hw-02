@@ -6,13 +6,13 @@ export interface User {
   id: string;
   name: string;
 }
-
 export interface Image {
   id: string;
   urls: Urls;
   alt_description: string;
-  likess: number;
+  likes: number;
   user: User;
+  openModal: (regular: string, alt_description: string) => void;
 }
 export interface ImageResult {
   results: Image[];

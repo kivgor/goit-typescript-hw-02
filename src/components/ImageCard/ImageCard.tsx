@@ -7,7 +7,7 @@ interface ImageCardProps {
   alt_description: string;
   likes: number;
   user: User;
-  openModal: { regular: string; alt_description: string };
+  openModal: (regular: string, alt_description: string) => void;
 }
 
 const ImageCard: FC<ImageCardProps> = ({

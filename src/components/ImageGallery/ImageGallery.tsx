@@ -5,7 +5,7 @@ import { Image } from '../App/App.types.js';
 
 interface ImageGalleryProps {
   imageList: Image[];
-  openModal: { regular: string; alt_description: string };
+  openModal: (regular: string, alt_description: string) => void;
 }
 
 const ImageGallery: FC<ImageGalleryProps> = ({ imageList, openModal }) => {
