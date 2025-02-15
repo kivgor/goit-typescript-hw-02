@@ -1,24 +1,25 @@
 import 'modern-normalize';
-import SearchBar from './SearchBar/SearchBar.js';
-import ImageGallery from './ImageGallery/ImageGallery.js';
-import ErrorMessage from './ErrorMessage/ErrorMessage.js';
-import LoadMoreBtn from './LoadMoreBtn/LoadMoreBtn.js';
-import Loader from './Loader/Loader.js';
 import { useEffect, useState } from 'react';
-import { fetchImagesByQuery } from '../services/api.js';
 import toast from 'react-hot-toast';
-import ImageModal from './ImageModal/ImageModal.js';
+import Loader from '../Loader/Loader.js';
+import ImageModal from '../ImageModal/ImageModal.js';
+import SearchBar from '../SearchBar/SearchBar.js';
+import ImageGallery from '../ImageGallery/ImageGallery.js';
+import ErrorMessage from '../ErrorMessage/ErrorMessage.js';
+import LoadMoreBtn from '../LoadMoreBtn/LoadMoreBtn.js';
+import { fetchImagesByQuery } from '../../services/api.js';
+import { Image } from './App.types.js';
 
 function App() {
-  const [imageList, setImageList] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
-  const [isError, setIsError] = useState(false);
-  const [page, setPage] = useState(1);
-  const [query, setQuery] = useState('');
-  const [totalPages, setTotalPages] = useState(0);
-  const [modalIsOpen, setIsOpen] = useState(false);
-  const [urlForModal, setUrlForModal] = useState('');
-  const [altForModal, setAltForModal] = useState('');
+  const [imageList, setImageList] = useState<Image[]>([]);
+  const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [isError, setIsError] = useState<boolean>(false);
+  const [page, setPage] = useState<number>(1);
+  const [query, setQuery] = useState<string>('');
+  const [totalPages, setTotalPages] = useState<number>(0);
+  const [modalIsOpen, setIsOpen] = useState<boolean>(false);
+  const [urlForModal, setUrlForModal] = useState<string>('');
+  const [altForModal, setAltForModal] = useState<string>('');
 
   useEffect(() => {
     if (!query) {
@@ -30,6 +31,8 @@ function App() {
         setIsLoading(true);
         setIsError(false);
         const { results, total_pages } = await fetchImagesByQuery(query, page);
+        console.log(results);
+
         setImageList(prev => [...prev, ...results]);
         setTotalPages(total_pages);
         if (total_pages === 0) {
@@ -46,7 +49,7 @@ function App() {
     getImagesData();
   }, [query, page]);
 
-  const handleChangeQuery = newQuery => {
+  const handleChangeQuery = (newQuery: string): void => {
     if (newQuery === query) {
       toast.error('Please change query!');
       return;
@@ -56,17 +59,17 @@ function App() {
     setPage(1);
   };
 
-  const handleLoadMore = () => {
+  const handleLoadMore = (): void => {
     setPage(prev => prev + 1);
   };
 
-  function openModal(url, alt) {
+  function openModal(url: string, alt: string): void {
     setUrlForModal(url);
     setAltForModal(alt);
     setIsOpen(true);
   }
 
-  function closeModal() {
+  function closeModal(): void {
     setIsOpen(false);
   }
 

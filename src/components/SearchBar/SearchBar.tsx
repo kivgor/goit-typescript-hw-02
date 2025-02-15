@@ -1,10 +1,14 @@
-import { useState } from 'react';
+import { useState, FormEvent, FC } from 'react';
 import css from './SearchBar.module.css';
 import toast from 'react-hot-toast';
 
-const SearchBar = ({ handleChangeQuery }) => {
-  const [value, setValue] = useState('');
-  const handleSubmit = evt => {
+interface SearchBarProps {
+  handleChangeQuery: (value: string) => void;
+}
+
+const SearchBar: FC<SearchBarProps> = ({ handleChangeQuery }) => {
+  const [value, setValue] = useState<string>('');
+  const handleSubmit = (evt: FormEvent<HTMLFormElement>) => {
     evt.preventDefault();
 
     if (evt.target.search.value === '') {

@@ -1,5 +1,21 @@
+import { FC } from 'react';
 import css from './ImageCard.module.css';
-const ImageCard = ({ urls, alt_description, likes, user, openModal }) => {
+
+interface ImageCardProps {
+  urls: { small: string; regular: string };
+  alt_description: string;
+  likes: number;
+  user: { id: string; name: string };
+  openModal: { regular: string; alt_description: string };
+}
+
+const ImageCard: FC<ImageCardProps> = ({
+  urls,
+  alt_description,
+  likes,
+  user,
+  openModal,
+}) => {
   return (
     <>
       <div className={css.text}>
