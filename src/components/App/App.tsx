@@ -62,7 +62,7 @@ function App() {
     setPage(1);
   };
 
-  const handleLoadMore = () => {
+  const handleLoadMore = (): void => {
     setPage(prev => prev + 1);
   };
 
