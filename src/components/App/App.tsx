@@ -26,11 +26,14 @@ function App() {
       return;
     }
 
-    const getImagesData = async () => {
+    const getImagesData = async (): Promise<void> => {
       try {
         setIsLoading(true);
         setIsError(false);
-        const { results, total_pages } = await fetchImagesByQuery(query, page);
+        const { results, total_pages } = await fetchImagesByQuery<{
+          total_pages: number;
+          results: Image[];
+        }>(query, page);
         console.log(results);
 
         setImageList(prev => [...prev, ...results]);
@@ -63,9 +66,9 @@ function App() {
     setPage(prev => prev + 1);
   };
 
-  function openModal(url: string, alt: string): void {
-    setUrlForModal(url);
-    setAltForModal(alt);
+  function openModal(regular: string, alt_description: string): void {
+    setUrlForModal(regular);
+    setAltForModal(alt_description);
     setIsOpen(true);
   }
 

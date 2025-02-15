@@ -1,11 +1,12 @@
 import { FC } from 'react';
 import css from './ImageCard.module.css';
+import { Image, Urls, User } from '../App/App.types';
 
 interface ImageCardProps {
-  urls: { small: string; regular: string };
+  urls: Urls;
   alt_description: string;
   likes: number;
-  user: { id: string; name: string };
+  user: User;
   openModal: { regular: string; alt_description: string };
 }
 

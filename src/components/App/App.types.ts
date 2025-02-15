@@ -14,3 +14,7 @@ export interface Image {
   likess: number;
   user: User;
 }
+export interface ImageResult {
+  results: Image[];
+  total_pages: number;
+}

@@ -1,9 +1,10 @@
 import { FC } from 'react';
 import ImageCard from '../ImageCard/ImageCard.js';
 import css from './ImageGallery.module.css';
+import { Image } from '../App/App.types.js';
 
 interface ImageGalleryProps {
-  imageList: [];
+  imageList: Image[];
   openModal: { regular: string; alt_description: string };
 }
 
